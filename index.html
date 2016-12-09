@@ -1,1 +1,359 @@
-"Hello World" 
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8"/>
+        <title>DOTA 2 Stuff</title>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta content="width=device-width, initial-scale=1" name="viewport"/>
+        <meta content="" name="description"/>
+        <meta content="" name="author"/>
+        <link href="http://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700&subset=all" rel="stylesheet"/>
+        <link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet"/>
+        <link href="http://cdnjs.cloudflare.com/ajax/libs/simple-line-icons/2.3.1/css/simple-line-icons.min.css" rel="stylesheet">
+        <link href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet"/>
+        <link href="./assets/global/css/components.min.css" rel="stylesheet" id="style_components" type="text/css"/>
+        <link href="./assets/global/css/plugins.min.css" rel="stylesheet" type="text/css"/>
+        <link href="./assets/global/css/style.css" rel="stylesheet" type="text/css"/>
+        <link href="./assets/layouts/layout/css/layout.min.css" rel="stylesheet" type="text/css"/>
+        <link href="./assets/layouts/layout/css/themes/blue.min.css" rel="stylesheet" type="text/css" id="style_color"/>
+        <link href="./assets/layouts/layout/css/custom.min.css" rel="stylesheet" type="text/css"/>
+        <link rel="shortcut icon" href="data:image/x-icon;," type="image/x-icon">
+    </head>
+    <body class="page-header-fixed page-sidebar-closed-hide-logo page-container-bg-solid" ng-app="ngApp" ng-controller="ngControllers" ng-cloak>
+        <!-- BEGIN HEADER -->
+        <div class="page-header navbar navbar-fixed-top">
+            <div class="page-header-inner ">
+                <div class="page-logo">
+                    <a href="index.html">
+                        <img src="./assets/layouts/layout/img/logo-default.png" alt="logo" class="logo-default"/>
+                    </a>
+                    <div class="menu-toggler sidebar-toggler"></div>
+                </div>
+                <a href="javascript:;" class="menu-toggler responsive-toggler" data-toggle="collapse" data-target=".navbar-collapse"></a>
+                <div class="page-top">
+                    <form class="search-form search-form-expanded">
+                        <div class="input-group">
+                            <input type="text" class="form-control" placeholder="Search..." ng-model="searchText">
+                            <span class="input-group-btn">
+                                <a href="javascript:;" class="btn submit">
+                                    <i class="icon-magnifier"></i>
+                                </a>
+                            </span>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <div class="clearfix"></div>
+        <div class="page-container">
+            <div class="page-sidebar-wrapper">
+                <div class="page-sidebar navbar-collapse collapse">
+                    <ul class="page-sidebar-menu  page-header-fixed page-sidebar-menu-hover-submenu " data-keep-expanded="false" data-auto-scroll="true" data-slide-speed="200">
+                        <li ng-class="selectedMode === 'Emoticons' ? 'nav-item active open' : 'nav-item'">
+                            <a class="nav-link" ng-click="selectMode('Emoticons')">
+                                <img src="./assets/layouts/layout/img/emoticons.png"/>
+                                <span class="title">Emoticons</span>
+                                <span ng-if="selectedMode === 'Emoticons'" class="selected"></span>
+                            </a>
+                        </li>
+                        <li ng-class="selectedMode === 'Items' ? 'nav-item active open' : 'nav-item'">
+                            <a class="nav-link" ng-click="selectMode('Items')">
+                                <img src="./assets/layouts/layout/img/items.png"/>
+                                <span class="title">Items</span>
+                                <span ng-if="selectedMode === 'Items'" class="selected"></span>
+                            </a>
+                        </li>
+                        <li ng-class="selectedMode === 'Mini Icons' ? 'nav-item active open' : 'nav-item'">
+                            <a class="nav-link" ng-click="selectMode('Mini Icons')">
+                                <img src="./assets/layouts/layout/img/mini_icons.png"/>
+                                <span class="title">Mini Icons</span>
+                                <span ng-if="selectedMode === 'Mini Icons'" class="selected"></span>
+                            </a>
+                        </li>
+                        <li ng-class="selectedMode === 'Miscs.' ? 'nav-item active open' : 'nav-item'">
+                            <a class="nav-link" ng-click="selectMode('Miscs.')">
+                                <img src="./assets/layouts/layout/img/miscs.png"/>
+                                <span class="title">Miscs.</span>
+                                <span ng-if="selectedMode === 'Miscs.'" class="selected"></span>
+                            </a>
+                        </li>
+                        <li ng-class="selectedMode === 'Modifiers' ? 'nav-item active open' : 'nav-item'">
+                            <a class="nav-link" ng-click="selectMode('Modifiers')">
+                                <img src="./assets/layouts/layout/img/modifiers.png"/>
+                                <span class="title">Modifiers</span>
+                                <span ng-if="selectedMode === 'Modifiers'" class="selected"></span>
+                            </a>
+                        </li>
+                        <li ng-class="selectedMode === 'Neutrals' ? 'nav-item active open' : 'nav-item'">
+                            <a class="nav-link" ng-click="selectMode('Neutrals')">
+                                <img src="./assets/layouts/layout/img/neutrals.png"/>
+                                <span class="title">Neutrals</span>
+                                <span ng-if="selectedMode === 'Neutrals'" class="selected"></span>
+                            </a>
+                        </li>
+                        <li ng-class="selectedMode === 'Spellicons' ? 'nav-item active open' : 'nav-item'">
+                            <a class="nav-link" ng-click="selectMode('Spellicons')">
+                                <img src="./assets/layouts/layout/img/spellicons.png"/>
+                                <span class="title">Spellicons</span>
+                                <span ng-if="selectedMode === 'Spellicons'" class="selected"></span>
+                            </a>
+                        </li>
+                        <li ng-class="selectedMode === 'Units Horizontal' ? 'nav-item active open' : 'nav-item'">
+                            <a class="nav-link" ng-click="selectMode('Units Horizontal')">
+                                <img src="./assets/layouts/layout/img/units_horizontal.png"/>
+                                <span class="title">Units Horizontal</span>
+                                <span ng-if="selectedMode === 'Units Horizontal'" class="selected"></span>
+                            </a>
+                        </li>
+                        <li ng-class="selectedMode === 'Units Vertical' ? 'nav-item active open' : 'nav-item'">
+                            <a class="nav-link" ng-click="selectMode('Units Vertical')">
+                                <img src="./assets/layouts/layout/img/units_vertical.png"/>
+                                <span class="title">Units Vertical</span>
+                                <span ng-if="selectedMode === 'Units Vertical'" class="selected"></span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="page-content-wrapper">
+                <div class="page-content">
+                    <h1 class="page-title">{{selectedMode}}</h1>
+                    <div ng-if="selectedMode === 'Emoticons'">
+                        <div>
+                            {{file}}
+                        </div>
+                        <div class="row">
+                            <div ng-repeat="file in data.sprites.files | filter:searchText" class="col-md-12 col-sm-12 col-xs-12">
+                                <div class="color-demo tooltips" data-toggle="modal" data-target="#emoticons_modal" ng-click="selectTexture(file)">
+                                    <div class="color-view bg-white bg-font-white bold uppercase">
+                                        <img ng-src="https://raw.githubusercontent.com/Sph3ryx/DotaTexturePack/master/materials_raw/sph3ryx_ui/{{getMode(selectedMode)}}/sprites/{{file}}"/>
+                                    </div>
+                                    <div class="color-info bg-white c-font-14 sbold"><code>{{file}}</code></div>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                    <div ng-if="selectedMode === 'Neutrals' || selectedMode === 'Units Horizontal'  || selectedMode === 'Units Vertical' || selectedMode === 'Spellicons'">
+                        <div>
+                            {{file}}
+                        </div>
+                        <div class="row">
+                            <div ng-repeat="file in data.files | filter:searchText" class="col-md-4 col-sm-4 col-xs-4">
+                                <div class="color-demo tooltips" data-toggle="modal" data-target="#textures_modal" ng-click="selectTexture(file, selectedMode)">
+                                    <div class="color-view bg-white bg-font-white bold uppercase">
+                                        <img ng-src="https://raw.githubusercontent.com/Sph3ryx/DotaTexturePack/master/materials_raw/sph3ryx_ui/{{getMode(selectedMode)}}/{{file}}"/>
+                                    </div>
+                                    <div class="color-info bg-white c-font-14 sbold"><code>{{file}}</code></div>
+                                </div>
+
+                            </div>
+                        </div>
+
+                    </div>
+                    <div ng-if="selectedMode === 'Modifiers'">
+                        <div>
+                            {{file}}
+                        </div>
+                        <div class="row">
+                            <div ng-repeat="file in data.files | filter:searchText" class="col-md-4 col-sm-4 col-xs-4">
+                                <div class="color-demo tooltips" data-toggle="modal" data-target="#textures_modal" ng-click="selectTexture(file, selectedMode)">
+                                    <div class="color-view bg-white bg-font-white bold uppercase">
+                                        <img ng-src="https://raw.githubusercontent.com/Sph3ryx/DotaTexturePack/master/materials_raw/sph3ryx_ui/{{getMode(selectedMode)}}/{{file}}"/>
+                                    </div>
+                                    <div class="color-info bg-white c-font-14 sbold"><code>{{file}}</code></div>
+                                </div>
+
+                            </div>
+                        </div>
+                        <div ng-repeat="mode in ['unsorted']">
+                            <h4 class="bold">{{capitalize(mode)}}</h4>
+                            <div>
+                                {{file}}
+                            </div>
+                            <div class="row">
+                                <div ng-repeat="file in data[mode].files | filter:searchText" class="col-md-4 col-sm-4 col-xs-4">
+                                    <div class="color-demo tooltips" data-toggle="modal" data-target="#textures_modal" ng-click="selectTexture(file, selectedMode, mode)">
+                                        <div class="color-view bg-white bg-font-white bold uppercase">
+                                            <img ng-src="https://raw.githubusercontent.com/Sph3ryx/DotaTexturePack/master/materials_raw/sph3ryx_ui/{{getMode(selectedMode)}}/{{mode}}/{{file}}"/>
+                                        </div>
+                                        <div class="color-info bg-white c-font-14 sbold"><code>{{file}}</code></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                    <div ng-if="selectedMode === 'Items'">
+                        <div>
+                            {{file}}
+                        </div>
+                        <div class="row">
+                            <div ng-repeat="file in data.files | filter:searchText" class="col-md-4 col-sm-4 col-xs-4">
+                                <div class="color-demo tooltips" data-toggle="modal" data-target="#textures_modal" ng-click="selectTexture(file, selectedMode)">
+                                    <div class="color-view bg-white bg-font-white bold uppercase">
+                                        <img ng-src="https://raw.githubusercontent.com/Sph3ryx/DotaTexturePack/master/materials_raw/sph3ryx_ui/{{getMode(selectedMode)}}/{{file}}"/>
+                                    </div>
+                                    <div class="color-info bg-white c-font-14 sbold"><code>{{file}}</code></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div ng-repeat="mode in ['64x64']">
+                            <h4 class="bold">{{capitalize(mode)}}</h4>
+                            <div>
+                                {{file}}
+                            </div>
+                            <div class="row">
+                                <div ng-repeat="file in data[mode].files | filter:searchText" class="col-md-4 col-sm-4 col-xs-4">
+                                    <div class="color-demo tooltips" data-toggle="modal" data-target="#textures_modal" ng-click="selectTexture(file, selectedMode, mode)">
+                                        <div class="color-view bg-white bg-font-white bold uppercase">
+                                            <img ng-src="https://raw.githubusercontent.com/Sph3ryx/DotaTexturePack/master/materials_raw/sph3ryx_ui/{{getMode(selectedMode)}}/{{mode}}/{{file}}"/>
+                                        </div>
+                                        <div class="color-info bg-white c-font-14 sbold"><code>{{file}}</code></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div ng-if="selectedMode === 'Mini Icons'">
+                        <div ng-repeat="mode in ['custom', 'heroes', 'items', 'runes', 'units']">
+                            <h4 class="bold">{{capitalize(mode)}}</h4>
+                            <div>
+                                {{file}}
+                            </div>
+                            <div class="row">
+                                <div ng-repeat="file in data[mode].files | filter:searchText" class="col-md-4 col-sm-4 col-xs-4">
+                                    <div class="color-demo tooltips" data-toggle="modal" data-target="#textures_modal" ng-click="selectTexture(file, selectedMode, mode)">
+                                        <div class="color-view bg-white bg-font-white bold uppercase">
+                                            <img ng-src="https://raw.githubusercontent.com/Sph3ryx/DotaTexturePack/master/materials_raw/sph3ryx_ui/{{getMode(selectedMode)}}/{{mode}}/{{file}}"/>
+                                        </div>
+                                        <div class="color-info bg-white c-font-14 sbold"><code>{{file}}</code></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div ng-if="selectedMode === 'Miscs.'">
+                        <div ng-repeat="mode in ['world_of_warcraft', 'trophies', 'teams', 'system_icons', 'small_boost_icons', 'others_256x256', 'others_128x128', 'others_128x64', 'others_64x64', 'others_32x32','minimap','logos','frames','cursor','country_flags','challenges','avatars']">
+                            <h4 class="bold">{{capitalize(mode)}}</h4>
+                            <div>
+                                {{file}}
+                            </div>
+                            <div class="row">
+                                <div ng-repeat="file in data[mode].files | filter:searchText" class="col-md-4 col-sm-4 col-xs-4">
+                                    <div class="color-demo tooltips" data-toggle="modal" data-target="#textures_modal" ng-click="selectTexture(file, selectedMode, mode)">
+                                        <div class="color-view bg-white bg-font-white bold uppercase">
+                                            <img ng-src="https://raw.githubusercontent.com/Sph3ryx/DotaTexturePack/master/materials_raw/sph3ryx_ui/miscs/{{mode}}/{{file}}"/>
+                                        </div>
+                                        <div class="color-info bg-white c-font-14 sbold"><code>{{file}}</code></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="modal fade" id="textures_modal">
+            <div class="modal-dialog modal-lg">
+                <div class="modal-content c-square">
+                    <div class="modal-header">
+                        <h4 class="modal-title bold uppercase font-black">{{selectedTexture}}</h4>
+                    </div>
+                    <div class="modal-body">
+                        <h4>Usage</h4>
+                        <code>/materials/sph3ryx_ui/{{path}}{{selectedTexture}}</code>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-outline dark sbold uppercase" data-dismiss="modal">Close</button>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+        </div>
+        <div class="modal fade" id="emoticons_modal">
+            <div class="modal-dialog modal-lg">
+                <div class="modal-content c-square">
+                    <div class="modal-header">
+                        <h4 class="modal-title bold uppercase font-black">{{selectedTexture}}</h4>
+                    </div>
+                    <div class="modal-body">
+                        <h4>Notes</h4>
+                        <div style="margin: 10px 0 30px 0">
+                            <span class="font-black">Replace <code>x</code> with appropriate index of the emoticon in sprite sheet (<code>x</code> starts from 0</span>
+                            ).
+                        </div>
+                        <h4>Usage</h4>
+                        <code>/materials/sph3ryx_ui/emoticons/{{format(selectedTexture)}}_x.png</code>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-outline dark sbold uppercase" data-dismiss="modal">Close</button>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+        </div>
+        <div class="page-footer">
+            <div class="page-footer-inner"> 2016 &copy; Spheryx</div>
+            <script src="http://cdnjs.cloudflare.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+            <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+            <script src="http://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.8.3/underscore-min.js"></script>
+            <script src="./assets/global/scripts/app.min.js" type="text/javascript"></script>
+            <script src="./assets/layouts/layout/scripts/layout.min.js" type="text/javascript"></script>
+            <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.5.6/angular.min.js" type="text/javascript"></script>
+            <script>"use strict";
+            angular.module("ngApp", ["ngControllers"]);
+            var ngControllers = angular.module("ngControllers", []);
+            ngControllers.controller("ngControllers", ["$scope", "$http", "$window", function ($scope, $http, $window) {
+
+                $scope.selectMode = function (selectedMode) {
+                    $scope.searchText = "";
+                    $scope.selectedMode = selectedMode;
+                    var mode = selectedMode.toLowerCase().replace(" ", "_");
+                    $scope.data = {};
+                    $http.get("https://raw.githubusercontent.com/Sph3ryx/DotaTexturePack/master/materials_raw/structure.json").success(function (data) {
+                        if (mode == "miscs.") mode = "miscs";
+                        $scope.data = data["sph3ryx_ui"][mode];
+                    });
+                };
+                $scope.selectMode("Emoticons");
+                $scope.selectTexture = function (file, selectedMode, mode) {
+                    $scope.selectedTexture = file;
+                    if (mode) {
+                        if ($scope.getMode(selectedMode) === "miscs.") {
+                            $scope.path =  "miscs/" + mode + "/";
+                        } else {
+                            $scope.path = $scope.getMode(selectedMode) + "/" + mode + "/";
+                        }
+
+                    } else {
+                        $scope.path = $scope.getMode(selectedMode) + "/";
+                    }
+
+                };
+                $scope.getMode = function (mode) {
+                    if (!mode) return "";
+                    return mode.toLowerCase().replace(" ", "_");
+                };
+                $scope.capitalize = function (string) {
+                    var split = string.split("_");
+                    var string = "";
+                    for (var i = 0; i < split.length; i++) {
+                        string = string + (split[i].charAt(0).toUpperCase() + split[i].slice(1)) + " ";
+                    }
+                    return string;
+                };
+
+                $scope.format = function (file) {
+                    if (!file) return "";
+                    return file.replace(".png", "");
+                };
+            }]);
+            </script>
+        </div>
+    </body>
+
+</html>
